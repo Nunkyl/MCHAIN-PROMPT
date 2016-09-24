@@ -57,4 +57,3 @@ newPDB = trm2pdb(modelOptimized, initialPDBstruct);
 pdbwrite(fullfile(toolboxPath, name), newPDB);
 
 end
-

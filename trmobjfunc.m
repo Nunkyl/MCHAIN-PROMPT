@@ -31,13 +31,15 @@ end
 
 if nargout > 1
     if iscell(trmodel)
-        trmodel = trmodel{1};
+%         trmodel = trmodel{1};
     end
     if iscell(angleIndices)
         angleIndices = angleIndices{1};
     end
     G = g(trmodel, X);
     G = G(angleIndices, 2:end-1);
+    
+    
 end
 
 
