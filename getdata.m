@@ -8,7 +8,7 @@ function [ pdbStructure, firstChains, lastChains ] = getdata( name )
 
 % By Elizabeth Lutsenko, 2016.
 
-toolboxPath = fileparts(which('calmodulin_demo'));
+toolboxPath = fileparts(which('demo'));
 pdbStructure = pdbread(fullfile(toolboxPath, name));
 
 firstConf = pdbStructure; firstConf.Model = firstConf.Model(1);
