@@ -16,7 +16,7 @@ f = @(x) trmobjfunc(model, angleIndices, x);
 
 initial_point = createinitialpoint(model, angleIndices);
 
-iterNum = 100;
+iterNum = 2;
 
 options = optimoptions('fmincon');
 options = optimoptions(options,'Display', 'iter');

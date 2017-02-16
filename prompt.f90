@@ -9,10 +9,12 @@ module prompt
   
   type :: TrModel
     real(kind=8), pointer :: r(:,:), alpha(:,:), psi(:,:)
+    real(kind=8), pointer :: bond_r(:,:), bond_alpha(:,:), bond_psi(:,:)
     real(kind=8), pointer :: start_coords(:,:)
     real(kind=8), pointer :: atom_masses(:)
     real(kind=8), pointer :: rot_mat(:,:,:)
-    integer(kind=4)       :: atom_num, conf_num
+    real(kind=8), pointer :: bond_ind(:,:)
+    integer(kind=4)       :: atom_num, conf_num, chain_num
   end type TrModel
 
 contains
@@ -156,8 +158,7 @@ contains
   end subroutine trCost
 
   ! Procedure implementing the objective function
-  subroutine objFunc(m, p_num, p_indices, t_num, t_indices, &
-    angle_values, p, calc_grad, func_val, grad_vec)
+  subroutine objFunc(m, a_num, angle_indices, angle_values, p) ! calc_grad, func_val, grad_vec
     type(TrModel),   intent(in)                     :: m
     integer(kind=4), intent(in)                     :: p_num
     integer(kind=4), intent(in), dimension(p_num)   :: p_indices
